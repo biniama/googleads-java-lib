@@ -44,7 +44,9 @@ public class Ad  implements java.io.Serializable {
      * <p>This field is used for upgraded urls only, as described at:
      *                 https://developers.google.com/adwords/api/docs/guides/upgraded-urls
      * <span class="constraint CollectionSize">The maximum size of this collection
-     * is 10.</span> */
+     * is 10.</span>
+     *                 <span class="constraint ContentsStringLength">Strings
+     * in this field must be non-empty (trimmed).</span> */
     private java.lang.String[] finalUrls;
 
     /* A list of possible final mobile URLs after all cross domain
@@ -53,7 +55,9 @@ public class Ad  implements java.io.Serializable {
      * at:
      *                 https://developers.google.com/adwords/api/docs/guides/upgraded-urls
      * <span class="constraint CollectionSize">The maximum size of this collection
-     * is 10.</span> */
+     * is 10.</span>
+     *                 <span class="constraint ContentsStringLength">Strings
+     * in this field must be non-empty (trimmed).</span> */
     private java.lang.String[] finalMobileUrls;
 
     /* A list of final app URLs that will be used on mobile if the
@@ -80,7 +84,11 @@ public class Ad  implements java.io.Serializable {
     /* Type of ad. */
     private com.google.api.ads.adwords.axis.v201601.cm.AdType type;
 
-    /* The device preference for the ad. */
+    /* The device preference for the ad. You can only specify a preference
+     * for
+     *                 mobile devices (CriterionId 30001). If unspecified
+     * (no device preference),
+     *                 all devices are targeted. */
     private java.lang.Long devicePreference;
 
     /* Indicates that this instance is a subtype of Ad.
@@ -194,6 +202,8 @@ public class Ad  implements java.io.Serializable {
      *                 https://developers.google.com/adwords/api/docs/guides/upgraded-urls
      * <span class="constraint CollectionSize">The maximum size of this collection
      * is 10.</span>
+     *                 <span class="constraint ContentsStringLength">Strings
+     * in this field must be non-empty (trimmed).</span>
      */
     public java.lang.String[] getFinalUrls() {
         return finalUrls;
@@ -208,6 +218,8 @@ public class Ad  implements java.io.Serializable {
      *                 https://developers.google.com/adwords/api/docs/guides/upgraded-urls
      * <span class="constraint CollectionSize">The maximum size of this collection
      * is 10.</span>
+     *                 <span class="constraint ContentsStringLength">Strings
+     * in this field must be non-empty (trimmed).</span>
      */
     public void setFinalUrls(java.lang.String[] finalUrls) {
         this.finalUrls = finalUrls;
@@ -232,6 +244,8 @@ public class Ad  implements java.io.Serializable {
      *                 https://developers.google.com/adwords/api/docs/guides/upgraded-urls
      * <span class="constraint CollectionSize">The maximum size of this collection
      * is 10.</span>
+     *                 <span class="constraint ContentsStringLength">Strings
+     * in this field must be non-empty (trimmed).</span>
      */
     public java.lang.String[] getFinalMobileUrls() {
         return finalMobileUrls;
@@ -248,6 +262,8 @@ public class Ad  implements java.io.Serializable {
      *                 https://developers.google.com/adwords/api/docs/guides/upgraded-urls
      * <span class="constraint CollectionSize">The maximum size of this collection
      * is 10.</span>
+     *                 <span class="constraint ContentsStringLength">Strings
+     * in this field must be non-empty (trimmed).</span>
      */
     public void setFinalMobileUrls(java.lang.String[] finalMobileUrls) {
         this.finalMobileUrls = finalMobileUrls;
@@ -377,7 +393,11 @@ public class Ad  implements java.io.Serializable {
     /**
      * Gets the devicePreference value for this Ad.
      * 
-     * @return devicePreference   * The device preference for the ad.
+     * @return devicePreference   * The device preference for the ad. You can only specify a preference
+     * for
+     *                 mobile devices (CriterionId 30001). If unspecified
+     * (no device preference),
+     *                 all devices are targeted.
      */
     public java.lang.Long getDevicePreference() {
         return devicePreference;
@@ -387,7 +407,11 @@ public class Ad  implements java.io.Serializable {
     /**
      * Sets the devicePreference value for this Ad.
      * 
-     * @param devicePreference   * The device preference for the ad.
+     * @param devicePreference   * The device preference for the ad. You can only specify a preference
+     * for
+     *                 mobile devices (CriterionId 30001). If unspecified
+     * (no device preference),
+     *                 all devices are targeted.
      */
     public void setDevicePreference(java.lang.Long devicePreference) {
         this.devicePreference = devicePreference;

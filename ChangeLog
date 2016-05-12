@@ -1,3 +1,80 @@
+2.13.1 - 05/02/2016
+-------------------
+AdWords:
+  - Modified logging of SOAP requests to replace the developer token with
+  `REDACTED`.
+  - Refactored ReportDownloader and AdHocReportDownloader to reduce duplicated code.
+  - Removed unused exceptions: ReportFailureException, SoapInvocationTargetException.
+  - Fixed Axis BatchJobHelper implementation to avoid concurrency issues with Apache
+    Axis TypeMapping objects. Fixes github issue #80:
+    https://github.com/googleads/googleads-java-lib/issues/80
+
+DFA:
+  - No changes.
+
+DFP:
+  - No changes.
+
+Common:
+  - Added logging of request IDs for SOAP requests. Fixes github issue #4:
+    https://github.com/googleads/googleads-java-lib/issues/4
+  - Removed unused com.google.api.ads.common.lib.utils.Choices utility.
+
+2.13.0 - 04/11/2016
+-------------------
+AdWords:
+  - Removed support and examples for v201506. See deprecation schedule at:
+    https://developers.google.com/adwords/api/docs/sunset-dates
+
+DFA:
+  - No changes.
+
+DFP:
+  - No changes.
+
+Common:
+  - Added framework for including utility usage in the user agent header.
+
+2.12.0 - 03/24/2016
+-------------------
+AdWords:
+  - Added support and examples for v201603.
+  - Migrated AdWords Axis Utility Extension (beta) to v201603. Fixes github issue #63
+    (https://github.com/googleads/googleads-java-lib/issues/63).
+
+DFA:
+  - No changes.
+
+DFP:
+  - No changes.
+
+Common:
+  - No changes.
+
+2.11.0 - 03/11/2016
+-------------------
+AdWords:
+  - Fixed github issue #53 (https://github.com/googleads/googleads-java-lib/issues/53):
+    throw/get methods on the utility extension's UtilityLibraryException class should not
+    throw a ClassCastException when passed an AxisFault.
+  - Fixed github issue #58 (https://github.com/googleads/googleads-java-lib/issues/58):
+    Added ImmutableAdWordsSession to facilitate thread-safe cloning of an AdWordsSession.
+
+DFA:
+  - No changes.
+
+DFP:
+  - Added ImmutableDfpSession to facilitate thread-safe cloning of a DfpSession.
+
+Common:
+  - Upgraded commons-configuration:commons-configuration from 1.7 to 1.10 to
+    avoid a required dependency on commons-collections:commons-collections:3.2.1,
+    which has a high security vulnerability. See:
+    https://commons.apache.org/proper/commons-collections/security-reports.html#Fixed_in_Apache_Commons_Collections_3.2.24.1
+  - Explicitly added a dependency on commons-collections:commons-collections:3.2.2.
+  - Excluded commons-collections:commons-collections:3.2.1 from the
+    commons-beanutils:commons-beanutils:1.9.2 dependency.
+
 2.10.0 - 02/23/2016
 -------------------
 AdWords:

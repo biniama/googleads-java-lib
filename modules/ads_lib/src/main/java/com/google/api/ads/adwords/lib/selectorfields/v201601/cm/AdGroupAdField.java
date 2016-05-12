@@ -159,19 +159,21 @@ public enum AdGroupAdField implements EntityField {
   CreativeUrlCustomParameters(true),
 
   /**
-   * The first description line
+   * The first description line.
    */
   @Filterable
   Description1(true),
 
   /**
-   * The second description line
+   * The second description line.
    */
   @Filterable
   Description2(true),
 
   /**
    * The device preference for the ad.
+   * You can only specify a preference for mobile devices (CriterionId 30001).
+   * If unspecified (no device preference), all devices are targeted.
    */
   @Filterable
   DevicePreference(true),
@@ -224,7 +226,7 @@ public enum AdGroupAdField implements EntityField {
   FileSize(false),
 
   /**
-   * The headline of the ad
+   * The headline of the ad.
    */
   @Filterable
   Headline(true),
@@ -272,9 +274,9 @@ public enum AdGroupAdField implements EntityField {
 
   /**
    * Labels that are attached to the AdGroupAd.
-   * To associate an existing {@link Label} to an existing {@link AdGroupAd}, use {@link AdGroupAdService#mutateLabel} with ADD operator.
-   * To remove an associated {@link Label} from the {@link AdGroupAd}, use {@link AdGroupAdService#mutateLabel} with REMOVE operator.
-   * To filter on {@link Label}s, use one of {@link Predicate.Operator#CONTAINS_ALL}, {@link Predicate.Operator#CONTAINS_ANY}, {@link Predicate.Operator#CONTAINS_NONE} operators with a list of {@link Label} ids.
+   * To associate an existing {@code Label} to an existing {@code AdGroupAd}, use {@code AdGroupAdService#mutateLabel} with ADD operator.
+   * To remove an associated {@code Label} from the {@code AdGroupAd}, use {@code AdGroupAdService#mutateLabel} with REMOVE operator.
+   * To filter on {@code Label}s, use one of {@code Predicate.Operator#CONTAINS_ALL}, {@code Predicate.Operator#CONTAINS_ANY}, {@code Predicate.Operator#CONTAINS_NONE} operators with a list of {@code Label} ids.
    */
   @Filterable
   Labels(true),
@@ -335,6 +337,7 @@ public enum AdGroupAdField implements EntityField {
   /**
    * Snippet for this ad.
    * Required for standard third-party ads.
+   * <p>The length of the string should be between 1 and 3072, inclusive.
    */
   RichMediaAdSnippet(false),
 
@@ -357,7 +360,7 @@ public enum AdGroupAdField implements EntityField {
 
   /**
    * The status of the ad.
-   * This field is required and should not be {@code null} when it is contained within {@link Operator}s : SET.
+   * This field is required and should not be {@code null} when it is contained within {@code Operator}s : SET.
    */
   @Filterable
   Status(true),
