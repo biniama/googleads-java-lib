@@ -1,3 +1,89 @@
+2.17.0 - 07/28/2016
+-------------------
+AdWords:
+  - Added support and examples for v201607.
+
+DFA:
+  - No changes.
+
+DFP:
+  - No changes.
+
+Common:
+  - No changes.
+
+2.16.0 - 06/17/2016
+-------------------
+AdWords:
+  - Removed support and examples for v201509. See deprecation schedule at:
+    https://developers.google.com/adwords/api/docs/sunset-dates
+  - Fixed 'No deserializer for ...' issue during batch job downloads:
+    https://github.com/googleads/googleads-java-lib/issues/89
+
+DFA:
+  - No changes.
+
+DFP:
+  - Added tests for StatementBuilder and ReportDownloader utilities.
+  - Fixed https://github.com/googleads/googleads-java-lib/issues/88.
+
+Common:
+  - No changes.
+
+2.15.0 - 05/27/2016
+-------------------
+AdWords:
+  - Added support and examples for v201605.
+  - Added new ParallelReportDownload example to demonstrate how to download an
+    Ad Hoc report for all accounts directly under a manager account in multiple
+    parallel threads.
+
+DFA:
+  - No changes.
+
+DFP:
+  - No changes.
+
+Common:
+  - No changes.
+
+2.14.0 - 05/17/2016
+-------------------
+AdWords:
+  - Removed AdWords Axis Utility Extension (beta). As mentioned in github issue #63
+    (https://github.com/googleads/googleads-java-lib/issues/63), this utility has
+    been deprecated.
+
+DFA:
+  - No changes.
+
+DFP:
+  - Added support for v201605.
+  - Added examples for v201605.
+  - Removed examples for v201505.
+  - Removed support for v201502.
+
+Common:
+  - No changes.
+
+2.13.2 - 05/12/2016
+-------------------
+AdWords:
+  - Modified AxisDeserializer to create a new TransformerFactory and
+  Transformer on each deserialization operation, since these objects
+  are *not* thread safe. Fixes github issue #85:
+  https://github.com/googleads/googleads-java-lib/issues/85
+
+DFA:
+  - No changes.
+
+DFP:
+  - No changes.
+
+Common:
+  - Added support for loading service account JSON key files from
+  ads.properties.
+
 2.13.1 - 05/02/2016
 -------------------
 AdWords:
