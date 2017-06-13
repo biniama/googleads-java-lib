@@ -28,8 +28,9 @@ package com.google.api.ads.dfp.axis.v201608;
 public abstract class HasDestinationUrlCreative  extends com.google.api.ads.dfp.axis.v201608.Creative  implements java.io.Serializable {
     /* The URL that the user is directed to if they click on the creative.
      * This
-     *                     attribute is required and has a maximum length
-     * of 1024 characters. */
+     *                     attribute is required unless the {@link destinationUrlType}
+     * is {@link DestinationUrlType#NONE},
+     *                     and has a maximum length of 1024 characters. */
     private java.lang.String destinationUrl;
 
     /* The action that should be performed if the user clicks on the
@@ -67,14 +68,32 @@ public abstract class HasDestinationUrlCreative  extends com.google.api.ads.dfp.
         this.destinationUrlType = destinationUrlType;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("advertiserId", getAdvertiserId())
+            .add("appliedLabels", getAppliedLabels())
+            .add("customFieldValues", getCustomFieldValues())
+            .add("destinationUrl", getDestinationUrl())
+            .add("destinationUrlType", getDestinationUrlType())
+            .add("id", getId())
+            .add("lastModifiedDateTime", getLastModifiedDateTime())
+            .add("name", getName())
+            .add("policyViolations", getPolicyViolations())
+            .add("previewUrl", getPreviewUrl())
+            .add("size", getSize())
+            .toString();
+    }
 
     /**
      * Gets the destinationUrl value for this HasDestinationUrlCreative.
      * 
      * @return destinationUrl   * The URL that the user is directed to if they click on the creative.
      * This
-     *                     attribute is required and has a maximum length
-     * of 1024 characters.
+     *                     attribute is required unless the {@link destinationUrlType}
+     * is {@link DestinationUrlType#NONE},
+     *                     and has a maximum length of 1024 characters.
      */
     public java.lang.String getDestinationUrl() {
         return destinationUrl;
@@ -86,8 +105,9 @@ public abstract class HasDestinationUrlCreative  extends com.google.api.ads.dfp.
      * 
      * @param destinationUrl   * The URL that the user is directed to if they click on the creative.
      * This
-     *                     attribute is required and has a maximum length
-     * of 1024 characters.
+     *                     attribute is required unless the {@link destinationUrlType}
+     * is {@link DestinationUrlType#NONE},
+     *                     and has a maximum length of 1024 characters.
      */
     public void setDestinationUrl(java.lang.String destinationUrl) {
         this.destinationUrl = destinationUrl;

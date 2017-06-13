@@ -49,8 +49,9 @@ import com.google.api.ads.adwords.lib.client.AdWordsSession;
 import com.google.api.ads.common.lib.auth.OfflineCredentials;
 import com.google.api.ads.common.lib.auth.OfflineCredentials.Api;
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.common.collect.Lists;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.joda.time.DateTime;
 
@@ -91,6 +92,10 @@ public class AddUniversalAppCampaign {
     // Create the campaign.
     Campaign campaign = new Campaign();
     campaign.setName("Interplanetary Cruise App #" + System.currentTimeMillis());
+
+    // Recommendation: Set the campaign to PAUSED when creating it to prevent
+    // the ads from immediately serving. Set to ENABLED once you've added
+    // targeting and the ads are ready to serve.
     campaign.setStatus(CampaignStatus.PAUSED);
 
     // Set the advertising channel and subchannel types for universal app campaigns.
@@ -234,10 +239,10 @@ public class AddUniversalAppCampaign {
     Language spanish = new Language();
     spanish.setId(1003L);
 
-    List<Criterion> criteria = Lists.<Criterion>newArrayList(california, mexico, english, spanish);
+    List<Criterion> criteria = new ArrayList<>(Arrays.asList(california, mexico, english, spanish));
 
     // Create operations to add each of the criteria above.
-    List<CampaignCriterionOperation> operations = Lists.<CampaignCriterionOperation>newArrayList();
+    List<CampaignCriterionOperation> operations = new ArrayList<>();
     for (Criterion criterion : criteria) {
       CampaignCriterionOperation operation = new CampaignCriterionOperation();
 

@@ -27,17 +27,15 @@ package com.google.api.ads.adwords.axis.v201607.ch;
  */
 public class CustomerChangeData  implements java.io.Serializable {
     /* A list of campaign changes for the customer, as specified by
-     * the selector.
-     *                 If a campaign is included in the selector it will
-     * be included in this list,
-     *                 even if the campaign did not change. */
+     * the selector. If a campaign is
+     *                 included in the selector it will be included in this
+     * list, even if the campaign did not change. */
     private com.google.api.ads.adwords.axis.v201607.ch.CampaignChangeData[] changedCampaigns;
 
     /* A list of feed changes for the customer as specified in the
-     * selector. If a
-     *                 feed is included in the selector then it will be included
-     * in this list,
-     *                 even if the feed did not change. */
+     * selector. If a feed is included in
+     *                 the selector then it will be included in this list,
+     * even if the feed did not change. */
     private com.google.api.ads.adwords.axis.v201607.ch.FeedChangeData[] changedFeeds;
 
     /* The timestamp for the last changed processed for this customer.
@@ -58,15 +56,23 @@ public class CustomerChangeData  implements java.io.Serializable {
            this.lastChangeTimestamp = lastChangeTimestamp;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("changedCampaigns", getChangedCampaigns())
+            .add("changedFeeds", getChangedFeeds())
+            .add("lastChangeTimestamp", getLastChangeTimestamp())
+            .toString();
+    }
 
     /**
      * Gets the changedCampaigns value for this CustomerChangeData.
      * 
      * @return changedCampaigns   * A list of campaign changes for the customer, as specified by
-     * the selector.
-     *                 If a campaign is included in the selector it will
-     * be included in this list,
-     *                 even if the campaign did not change.
+     * the selector. If a campaign is
+     *                 included in the selector it will be included in this
+     * list, even if the campaign did not change.
      */
     public com.google.api.ads.adwords.axis.v201607.ch.CampaignChangeData[] getChangedCampaigns() {
         return changedCampaigns;
@@ -77,10 +83,9 @@ public class CustomerChangeData  implements java.io.Serializable {
      * Sets the changedCampaigns value for this CustomerChangeData.
      * 
      * @param changedCampaigns   * A list of campaign changes for the customer, as specified by
-     * the selector.
-     *                 If a campaign is included in the selector it will
-     * be included in this list,
-     *                 even if the campaign did not change.
+     * the selector. If a campaign is
+     *                 included in the selector it will be included in this
+     * list, even if the campaign did not change.
      */
     public void setChangedCampaigns(com.google.api.ads.adwords.axis.v201607.ch.CampaignChangeData[] changedCampaigns) {
         this.changedCampaigns = changedCampaigns;
@@ -99,10 +104,9 @@ public class CustomerChangeData  implements java.io.Serializable {
      * Gets the changedFeeds value for this CustomerChangeData.
      * 
      * @return changedFeeds   * A list of feed changes for the customer as specified in the
-     * selector. If a
-     *                 feed is included in the selector then it will be included
-     * in this list,
-     *                 even if the feed did not change.
+     * selector. If a feed is included in
+     *                 the selector then it will be included in this list,
+     * even if the feed did not change.
      */
     public com.google.api.ads.adwords.axis.v201607.ch.FeedChangeData[] getChangedFeeds() {
         return changedFeeds;
@@ -113,10 +117,9 @@ public class CustomerChangeData  implements java.io.Serializable {
      * Sets the changedFeeds value for this CustomerChangeData.
      * 
      * @param changedFeeds   * A list of feed changes for the customer as specified in the
-     * selector. If a
-     *                 feed is included in the selector then it will be included
-     * in this list,
-     *                 even if the feed did not change.
+     * selector. If a feed is included in
+     *                 the selector then it will be included in this list,
+     * even if the feed did not change.
      */
     public void setChangedFeeds(com.google.api.ads.adwords.axis.v201607.ch.FeedChangeData[] changedFeeds) {
         this.changedFeeds = changedFeeds;

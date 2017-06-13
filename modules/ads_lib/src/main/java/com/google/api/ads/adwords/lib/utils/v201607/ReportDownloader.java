@@ -18,10 +18,11 @@ import com.google.api.ads.adwords.lib.client.AdWordsSession;
 import com.google.api.ads.adwords.lib.jaxb.v201607.DownloadFormat;
 import com.google.api.ads.adwords.lib.jaxb.v201607.ReportDefinition;
 import com.google.api.ads.adwords.lib.utils.AdHocReportDownloadHelper;
+import com.google.api.ads.adwords.lib.utils.AdWordsInternals;
 import com.google.api.ads.adwords.lib.utils.ReportDownloadResponse;
 import com.google.api.ads.adwords.lib.utils.ReportDownloadResponseException;
 import com.google.api.ads.adwords.lib.utils.ReportException;
-import com.google.common.annotations.VisibleForTesting;
+import com.google.inject.Inject;
 
 /**
  * Reports are fetched synchronously like in the following code:
@@ -38,10 +39,7 @@ import com.google.common.annotations.VisibleForTesting;
  * Implementation is not thread-safe.
  * </p>
  */
-public class ReportDownloader {
-
-  /** The version to append to url for Ad Hoc report downloads. */
-  private static final String VERSION = "v201607";
+public class ReportDownloader implements ReportDownloaderInterface {
 
   private final AdHocReportDownloadHelper adHocReportDownloadHelper;
 
@@ -51,22 +49,17 @@ public class ReportDownloader {
    * @param session AdWordsSession to use to make report download requests.
    */
   public ReportDownloader(AdWordsSession session) {
-    this(new AdHocReportDownloadHelper(session, VERSION));
+    this(
+        AdWordsInternals.getBootstrapper().getInstanceOf(session, AdHocReportDownloadHelper.class));
   }
 
-  @VisibleForTesting
+  /** Constructor used by Guice. */
+  @Inject
   ReportDownloader(AdHocReportDownloadHelper adHocReportDownloadHelper) {
     this.adHocReportDownloadHelper = adHocReportDownloadHelper;
   }
-  
-  /**
-   * Downloads a report and returns a ReportDownloadResponse with the results.
-   *
-   * @param reportDefinition to download a report for.
-   * @return {@link ReportDownloadResponse} If the HTTP request completes successfully.
-   * @throws ReportException If we don't receive a response from the server.
-   * @throws ReportDownloadResponseException If the server indicates a problem with the request.
-   */
+
+  @Override
   public ReportDownloadResponse downloadReport(ReportDefinition reportDefinition)
       throws ReportException, ReportDownloadResponseException {
     return adHocReportDownloadHelper.downloadReport(
@@ -74,15 +67,7 @@ public class ReportDownloader {
         new DetailedReportDownloadResponseException.Builder());
   }
 
-  /**
-   * Downloads a report query (AWQL) and returns a ReportDownloadResponse with the results.
-   *
-   * @param reportQuery to download a report for.
-   * @param format Format to download the report as. CSV,
-   * @return {@link ReportDownloadResponse} If the HTTP request completes successfully.
-   * @throws ReportException If there is any issue making HTTP request with server.
-   * @throws ReportDownloadResponseException If the server indicates a problem with the request.
-   */
+  @Override
   public ReportDownloadResponse downloadReport(String reportQuery, DownloadFormat format)
       throws ReportException, ReportDownloadResponseException {
     return adHocReportDownloadHelper.downloadReport(
@@ -90,22 +75,12 @@ public class ReportDownloader {
         new DetailedReportDownloadResponseException.Builder());
   }
 
-  /**
-   * Returns the reportDownloadTimeout in milliseconds.
-   */
+  @Override
   public int getReportDownloadTimeout() {
     return adHocReportDownloadHelper.getReportDownloadTimeout();
   }
 
-  /**
-   * Sets the timeout for both CONNECT and READ to the specified value. Defaults
-   * to 3 minutes. Set property api.adwords.reportDownloadTimeout in
-   * ads.properties or as a system property to set a default for all
-   * ReportDownloaders.
-   *
-   * @param reportDownloadTimeout the reportDownloadTimeout to set in
-   *        milliseconds
-   */
+  @Override
   public void setReportDownloadTimeout(int reportDownloadTimeout) {
     adHocReportDownloadHelper.setReportDownloadTimeout(reportDownloadTimeout);
   }

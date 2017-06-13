@@ -57,7 +57,7 @@ public class BiddableAdGroupCriterion  extends com.google.api.ads.adwords.axis.v
     private java.lang.String destinationUrl;
 
     /* The campaign bidding strategy specific experiment data for
-     *                     this criterion. */
+     * this criterion. */
     private com.google.api.ads.adwords.axis.v201607.cm.BiddableAdGroupCriterionExperimentData experimentData;
 
     /* First page Cpc for this criterion.
@@ -187,6 +187,37 @@ public class BiddableAdGroupCriterion  extends com.google.api.ads.adwords.axis.v
         this.urlCustomParameters = urlCustomParameters;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("adGroupCriterionType", getAdGroupCriterionType())
+            .add("adGroupId", getAdGroupId())
+            .add("approvalStatus", getApprovalStatus())
+            .add("baseAdGroupId", getBaseAdGroupId())
+            .add("baseCampaignId", getBaseCampaignId())
+            .add("bidModifier", getBidModifier())
+            .add("biddingStrategyConfiguration", getBiddingStrategyConfiguration())
+            .add("criterion", getCriterion())
+            .add("criterionUse", getCriterionUse())
+            .add("destinationUrl", getDestinationUrl())
+            .add("disapprovalReasons", getDisapprovalReasons())
+            .add("experimentData", getExperimentData())
+            .add("finalAppUrls", getFinalAppUrls())
+            .add("finalMobileUrls", getFinalMobileUrls())
+            .add("finalUrls", getFinalUrls())
+            .add("firstPageCpc", getFirstPageCpc())
+            .add("firstPositionCpc", getFirstPositionCpc())
+            .add("forwardCompatibilityMap", getForwardCompatibilityMap())
+            .add("labels", getLabels())
+            .add("qualityInfo", getQualityInfo())
+            .add("systemServingStatus", getSystemServingStatus())
+            .add("topOfPageCpc", getTopOfPageCpc())
+            .add("trackingUrlTemplate", getTrackingUrlTemplate())
+            .add("urlCustomParameters", getUrlCustomParameters())
+            .add("userStatus", getUserStatus())
+            .toString();
+    }
 
     /**
      * Gets the userStatus value for this BiddableAdGroupCriterion.
@@ -330,7 +361,7 @@ public class BiddableAdGroupCriterion  extends com.google.api.ads.adwords.axis.v
      * Gets the experimentData value for this BiddableAdGroupCriterion.
      * 
      * @return experimentData   * The campaign bidding strategy specific experiment data for
-     *                     this criterion.
+     * this criterion.
      */
     public com.google.api.ads.adwords.axis.v201607.cm.BiddableAdGroupCriterionExperimentData getExperimentData() {
         return experimentData;
@@ -341,7 +372,7 @@ public class BiddableAdGroupCriterion  extends com.google.api.ads.adwords.axis.v
      * Sets the experimentData value for this BiddableAdGroupCriterion.
      * 
      * @param experimentData   * The campaign bidding strategy specific experiment data for
-     *                     this criterion.
+     * this criterion.
      */
     public void setExperimentData(com.google.api.ads.adwords.axis.v201607.cm.BiddableAdGroupCriterionExperimentData experimentData) {
         this.experimentData = experimentData;

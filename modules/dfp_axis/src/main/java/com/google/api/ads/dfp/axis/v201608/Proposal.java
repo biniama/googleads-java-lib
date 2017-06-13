@@ -135,10 +135,7 @@ public class Proposal  implements java.io.Serializable {
      *                 agency exists, its {@link ProposalCompanyAssociation#companyId}
      * will be copied to
      *                 {@link Order#agencyId} when the proposal turns into
-     * an order.
-     *                 <span class="constraint Applicable">This attribute
-     * is applicable when:<ul><li>not using programmatic guaranteed, using
-     * sales management.</li></ul></span> */
+     * an order. */
     private com.google.api.ads.dfp.axis.v201608.ProposalCompanyAssociation[] agencies;
 
     /* The probability to close this {@code Proposal}. This percentage
@@ -679,6 +676,63 @@ public class Proposal  implements java.io.Serializable {
            this.hasOfflineErrors = hasOfflineErrors;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("actualExpiryTime", getActualExpiryTime())
+            .add("advertiser", getAdvertiser())
+            .add("advertiserDiscount", getAdvertiserDiscount())
+            .add("agencies", getAgencies())
+            .add("agencyCommission", getAgencyCommission())
+            .add("appliedLabels", getAppliedLabels())
+            .add("appliedTeamIds", getAppliedTeamIds())
+            .add("approvalStatus", getApprovalStatus())
+            .add("billingBase", getBillingBase())
+            .add("billingCap", getBillingCap())
+            .add("billingSchedule", getBillingSchedule())
+            .add("billingSource", getBillingSource())
+            .add("budget", getBudget())
+            .add("currencyCode", getCurrencyCode())
+            .add("customFieldValues", getCustomFieldValues())
+            .add("customThirdPartyAdServerName", getCustomThirdPartyAdServerName())
+            .add("dfpOrderId", getDfpOrderId())
+            .add("effectiveAppliedLabels", getEffectiveAppliedLabels())
+            .add("endDateTime", getEndDateTime())
+            .add("exchangeRate", getExchangeRate())
+            .add("expectedExpiryTime", getExpectedExpiryTime())
+            .add("hasOfflineErrors", getHasOfflineErrors())
+            .add("id", getId())
+            .add("internalNotes", getInternalNotes())
+            .add("isArchived", getIsArchived())
+            .add("isProgrammatic", getIsProgrammatic())
+            .add("isSold", getIsSold())
+            .add("lastModifiedDateTime", getLastModifiedDateTime())
+            .add("lastRetractionDetails", getLastRetractionDetails())
+            .add("marketplaceInfo", getMarketplaceInfo())
+            .add("name", getName())
+            .add("offlineErrors", getOfflineErrors())
+            .add("poNumber", getPoNumber())
+            .add("pricingModel", getPricingModel())
+            .add("primarySalesperson", getPrimarySalesperson())
+            .add("primaryTraffickerId", getPrimaryTraffickerId())
+            .add("probabilityOfClose", getProbabilityOfClose())
+            .add("proposalDiscount", getProposalDiscount())
+            .add("refreshExchangeRate", getRefreshExchangeRate())
+            .add("resources", getResources())
+            .add("salesPlannerIds", getSalesPlannerIds())
+            .add("secondarySalespeople", getSecondarySalespeople())
+            .add("secondaryTraffickerIds", getSecondaryTraffickerIds())
+            .add("sellerContactIds", getSellerContactIds())
+            .add("startDateTime", getStartDateTime())
+            .add("status", getStatus())
+            .add("termsAndConditions", getTermsAndConditions())
+            .add("thirdPartyAdServerId", getThirdPartyAdServerId())
+            .add("timeZoneId", getTimeZoneId())
+            .add("valueAddedTax", getValueAddedTax())
+            .add("workflowProgress", getWorkflowProgress())
+            .toString();
+    }
 
     /**
      * Gets the id value for this Proposal.
@@ -1039,9 +1093,6 @@ public class Proposal  implements java.io.Serializable {
      * will be copied to
      *                 {@link Order#agencyId} when the proposal turns into
      * an order.
-     *                 <span class="constraint Applicable">This attribute
-     * is applicable when:<ul><li>not using programmatic guaranteed, using
-     * sales management.</li></ul></span>
      */
     public com.google.api.ads.dfp.axis.v201608.ProposalCompanyAssociation[] getAgencies() {
         return agencies;
@@ -1065,9 +1116,6 @@ public class Proposal  implements java.io.Serializable {
      * will be copied to
      *                 {@link Order#agencyId} when the proposal turns into
      * an order.
-     *                 <span class="constraint Applicable">This attribute
-     * is applicable when:<ul><li>not using programmatic guaranteed, using
-     * sales management.</li></ul></span>
      */
     public void setAgencies(com.google.api.ads.dfp.axis.v201608.ProposalCompanyAssociation[] agencies) {
         this.agencies = agencies;

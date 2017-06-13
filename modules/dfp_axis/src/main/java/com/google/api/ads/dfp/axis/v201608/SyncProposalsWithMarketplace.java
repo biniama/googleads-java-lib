@@ -23,15 +23,27 @@ package com.google.api.ads.dfp.axis.v201608;
 
 
 /**
- * The action used for synchronizing the local {@link Proposal} with
- * the latest version in
+ * Synchronizes the local {@link Proposal} with the latest version
+ * in
  *             Marketplace.
- *             This action is only applicable for programmatic proposals.
+ *             This action is only to be used in cases where a {@link
+ * RequestBuyerAcceptance} action is being
+ *             performed, but the buyer has made updates that have not
+ * yet been picked up by DFP. In this case
+ *             a {@link DealError#PROPOSAL_OUT_OF_SYNC_WITH_MARKETPLACE}
+ * error will be thrown. This action is
+ *             used to tell DFP to pick up the buyer changes immediately.
  */
 public class SyncProposalsWithMarketplace  extends com.google.api.ads.dfp.axis.v201608.ProposalAction  implements java.io.Serializable {
     public SyncProposalsWithMarketplace() {
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .toString();
+    }
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof SyncProposalsWithMarketplace)) return false;

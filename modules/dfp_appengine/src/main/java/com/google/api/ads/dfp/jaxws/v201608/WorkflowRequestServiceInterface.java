@@ -27,9 +27,9 @@ import javax.xml.ws.ResponseWrapper;
 /**
  * 
  *       Provides methods to retrieve and perform actions on {@link WorkflowRequest} objects
- *       <p>
- *       To use this service, you need to have the new sales management solution enabled on your network.
- *       If you do not see a "Sales" tab in <a href="https://www.google.com/dfp">DoubleClick for
+ *       
+ *       <p>To use this service, you need to have the new sales management solution enabled on your
+ *       network. If you do not see a "Sales" tab in <a href="https://www.google.com/dfp">DoubleClick for
  *       Publishers (DFP)</a>, you will not be able to use this service.
  *     
  * 
@@ -84,7 +84,9 @@ public interface WorkflowRequestServiceInterface {
      *         <td>{@link WorkflowRequest#type}</td>
      *         </tr>
      *         </table>
-     *         <p>Starting in V201405 a {@code type} filter must be used</p>
+     *         
+     *         <p>The {@code type} filter is required.
+     *         
      *         @param filterStatement a Publisher Query Language statement used to filter a set of proposals
      *         @return the workflow requests that match the given filter
      *       

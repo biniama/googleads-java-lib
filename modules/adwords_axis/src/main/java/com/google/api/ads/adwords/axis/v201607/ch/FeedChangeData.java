@@ -34,10 +34,9 @@ public class FeedChangeData  implements java.io.Serializable {
     private com.google.api.ads.adwords.axis.v201607.ch.ChangeStatus feedChangeStatus;
 
     /* A list of feed item IDs that have been added or modified within
-     * the the
-     *                 feed.  If a feed item is deleted after a modification,
-     * it will not be
-     *                 included in this list. */
+     * the the feed. If a feed item is
+     *                 deleted after a modification, it will not be included
+     * in this list. */
     private long[] changedFeedItems;
 
     /* A list feed item IDs that have been removed from the feed. */
@@ -57,6 +56,16 @@ public class FeedChangeData  implements java.io.Serializable {
            this.removedFeedItems = removedFeedItems;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("changedFeedItems", getChangedFeedItems())
+            .add("feedChangeStatus", getFeedChangeStatus())
+            .add("feedId", getFeedId())
+            .add("removedFeedItems", getRemovedFeedItems())
+            .toString();
+    }
 
     /**
      * Gets the feedId value for this FeedChangeData.
@@ -102,10 +111,9 @@ public class FeedChangeData  implements java.io.Serializable {
      * Gets the changedFeedItems value for this FeedChangeData.
      * 
      * @return changedFeedItems   * A list of feed item IDs that have been added or modified within
-     * the the
-     *                 feed.  If a feed item is deleted after a modification,
-     * it will not be
-     *                 included in this list.
+     * the the feed. If a feed item is
+     *                 deleted after a modification, it will not be included
+     * in this list.
      */
     public long[] getChangedFeedItems() {
         return changedFeedItems;
@@ -116,10 +124,9 @@ public class FeedChangeData  implements java.io.Serializable {
      * Sets the changedFeedItems value for this FeedChangeData.
      * 
      * @param changedFeedItems   * A list of feed item IDs that have been added or modified within
-     * the the
-     *                 feed.  If a feed item is deleted after a modification,
-     * it will not be
-     *                 included in this list.
+     * the the feed. If a feed item is
+     *                 deleted after a modification, it will not be included
+     * in this list.
      */
     public void setChangedFeedItems(long[] changedFeedItems) {
         this.changedFeedItems = changedFeedItems;

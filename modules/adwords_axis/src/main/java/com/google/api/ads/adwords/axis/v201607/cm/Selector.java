@@ -52,8 +52,11 @@ public class Selector  implements java.io.Serializable {
     /* Range of dates for which you want to include data. If this
      * value is omitted,
      *                 results for all dates are returned.
-     *                 <span class="constraint DateRangeWithinRange">This
-     * range must be contained within the range [19700101, 20380101].</span> */
+     *                 <p class="note"><b>Note:</b> This field is only used
+     * by the report download
+     *                 service. For all other services, it is ignored.</p>
+     * <span class="constraint DateRangeWithinRange">This range must be contained
+     * within the range [19700101, 20380101].</span> */
     private com.google.api.ads.adwords.axis.v201607.cm.DateRange dateRange;
 
     /* The fields on which you want to sort, and the sort order. The
@@ -82,6 +85,17 @@ public class Selector  implements java.io.Serializable {
            this.paging = paging;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("dateRange", getDateRange())
+            .add("fields", getFields())
+            .add("ordering", getOrdering())
+            .add("paging", getPaging())
+            .add("predicates", getPredicates())
+            .toString();
+    }
 
     /**
      * Gets the fields value for this Selector.
@@ -179,8 +193,11 @@ public class Selector  implements java.io.Serializable {
      * @return dateRange   * Range of dates for which you want to include data. If this
      * value is omitted,
      *                 results for all dates are returned.
-     *                 <span class="constraint DateRangeWithinRange">This
-     * range must be contained within the range [19700101, 20380101].</span>
+     *                 <p class="note"><b>Note:</b> This field is only used
+     * by the report download
+     *                 service. For all other services, it is ignored.</p>
+     * <span class="constraint DateRangeWithinRange">This range must be contained
+     * within the range [19700101, 20380101].</span>
      */
     public com.google.api.ads.adwords.axis.v201607.cm.DateRange getDateRange() {
         return dateRange;
@@ -193,8 +210,11 @@ public class Selector  implements java.io.Serializable {
      * @param dateRange   * Range of dates for which you want to include data. If this
      * value is omitted,
      *                 results for all dates are returned.
-     *                 <span class="constraint DateRangeWithinRange">This
-     * range must be contained within the range [19700101, 20380101].</span>
+     *                 <p class="note"><b>Note:</b> This field is only used
+     * by the report download
+     *                 service. For all other services, it is ignored.</p>
+     * <span class="constraint DateRangeWithinRange">This range must be contained
+     * within the range [19700101, 20380101].</span>
      */
     public void setDateRange(com.google.api.ads.adwords.axis.v201607.cm.DateRange dateRange) {
         this.dateRange = dateRange;

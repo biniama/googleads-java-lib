@@ -1,3 +1,164 @@
+3.4.0 - 5/31/2017
+-------------------
+AdWords:
+  - Added support and examples for v201705.
+
+DFP:
+  - No changes.
+
+Common:
+  - No changes.
+
+3.3.0 - 5/23/2017
+-------------------
+AdWords:
+  - Removed all artifacts for the AdWords Express API, which is no longer
+    available.
+  - Updated generated Axis objects to include a meaningful `toString`
+    implementation. Fixes github issue:
+    https://github.com/googleads/googleads-java-lib/issues/98
+  - Updated generated Axis Page objects to implement Iterable<T>, where
+    T is the type of page entry.
+    Fixes github issues:
+    https://github.com/googleads/googleads-java-lib/issues/109
+    https://github.com/googleads/googleads-java-lib/issues/96
+
+DFP:
+  - Added support for v201705.
+  - Removed support for v201605.
+  - Removed examples for v201608.
+  - Updated generated Axis objects to include a meaningful `toString`
+    implementation. Fixes github issue:
+    https://github.com/googleads/googleads-java-lib/issues/98
+  - Updated generated Axis Page objects to implement Iterable<T>, where
+    T is the type of page results.
+    Fixes github issues:
+    https://github.com/googleads/googleads-java-lib/issues/109
+    https://github.com/googleads/googleads-java-lib/issues/96
+
+Common:
+  - No changes.
+
+3.2.0 - 3/17/2017
+-------------------
+AdWords:
+  - Removed support and examples for v201605. See deprecation schedule at:
+    https://developers.google.com/adwords/api/docs/sunset-dates
+  - Fixed creation of the ReportDownloader object in the v201609
+    DownloadCriteriaReport example for Axis.
+  - Updated AddSiteLinksUsingFeeds examples to use field and
+    constant names that are consistent with the field names
+    of SitelinkFeedItem.
+  - Moved log4j.properties and ads.properties to the `src` directory in
+    non-maven example archive adwords-axis-jars-and-examples.tar.gz so
+    log4j will function properly and the ads.properties in the user's
+    home directory will take precedence over the sample in the archive.
+
+DFP:
+  - Moved log4j.properties and ads.properties to the `src` directory in
+    non-maven example archive dfp-axis-jars-and-examples.tar.gz so
+    log4j will function properly and the ads.properties in the user's
+    home directory will take precedence over the sample in the archive.
+
+Common:
+  - Upgraded to version 2.6 of commons-lang in the ads_lib module.
+  - Modified configuration loading to only look for
+    google-ads-api-java-build.properties in the classpath, since there's no
+    need to override this via a local file. In addition, modified the log
+    message to something less alarming when an optional configuration file
+    cannot be loaded. Fixes github issue:
+    https://github.com/googleads/googleads-java-lib/issues/90
+
+3.1.1 - 3/02/2017
+-------------------
+AdWords:
+  - No changes.
+
+DFP:
+  - No changes.
+
+Common:
+  - To avoid issues introduced by new releases of dependencies, set a specific
+    version for all that previously used RELEASE:
+    - com.google.guava 20.0
+    - com.google.api-client 1.22.0
+    - com.google.http-client 1.22.0
+    - org.seleniumhq.selenium 2.52.0
+
+3.1.0 - 2/28/2017
+-------------------
+AdWords:
+  - Added support and examples for v201702.
+  - Introduced AdWordsServicesInterface to allow for easier proxying of AdWordsServices objects.
+  - Added getInstance() to all implementations of AdWordsServicesInterface. This is preferred over
+    using each implementation's constructor, as reflected in all of the v201702 examples.
+  - Added a getUtility() method to all implementations of AdWordsServicesInterface. This is
+    preferred over calling utility constructors. The utilities supported by this method are
+    ReportDownloaderInterface and BatchJobHelper in all versions.
+
+DFP:
+  - Regenerated DFP service stubs to fix potential unmarshalling error in
+  v201702.
+
+Common:
+  - No changes.
+
+3.0.0 - 2/14/2017
+-------------------
+AdWords:
+  - Introduced ReportDownloaderInterface for each version of AdWords API
+    to allow extensions to more easily wrap ReportDownloader objects.
+  - Added HttpHandler for Axis and removed the dependency on
+    commons-httpclient 3.1. Fixes github issue #31:
+    https://github.com/googleads/googleads-java-lib/issues/31
+  - Added a getUtility method to AdWordsServices for improved dependency
+    management. This also makes it easier for extension frameworks to
+    proxy utility objects.
+
+DFP:
+  - Added support for v201702.
+  - Removed support for v201602 (sunset).
+  - Removed examples for v201605 (deprecated).
+
+Common:
+  - Introduced AdsServicesInterface and sub interfaces
+    AdWordsServicesInterface and DfpServicesInterface to allow extensions
+    to provide customized implementations.
+  - Changed minimum JRE version to 1.7.
+
+2.22.0 - 12/07/2016
+-------------------
+AdWords:
+  - Refactored the HandlePolicyViolationError examples to make them easier
+    to read and understand.
+
+DFP:
+  - Added support for v201611.
+  - Removed support for v201508 and v201511.
+  - Removed examples for v201602.
+
+Common:
+  - No changes.
+
+2.21.0 - 10/20/2016
+-------------------
+AdWords:
+  - Removed support and examples for v201603. See deprecation schedule at:
+    https://developers.google.com/adwords/api/docs/sunset-dates
+  - Added example for accepting a service link between a Google Merchant
+    Center account and an AdWords account.
+  - Updated examples that create campaigns to set the campaign's status
+    to PAUSED to prevent ads from immediately serving.
+
+DFA:
+  - No changes.
+
+DFP:
+  - No changes.
+
+Common:
+  - No changes.
+
 2.20.0 - 10/03/2016
 -------------------
 AdWords:

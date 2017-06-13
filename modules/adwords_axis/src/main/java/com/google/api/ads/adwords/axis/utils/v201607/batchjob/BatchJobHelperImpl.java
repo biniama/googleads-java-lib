@@ -20,52 +20,36 @@ import com.google.api.ads.adwords.axis.v201607.cm.BatchJob;
 import com.google.api.ads.adwords.axis.v201607.cm.BatchJobOpsServiceSoapBindingStub;
 import com.google.api.ads.adwords.axis.v201607.cm.Operand;
 import com.google.api.ads.adwords.axis.v201607.cm.Operation;
-import com.google.api.ads.adwords.lib.client.AdWordsSession;
-import com.google.api.ads.adwords.lib.utils.AdWordsInternals;
 import com.google.api.ads.adwords.lib.utils.BatchJobException;
 import com.google.api.ads.adwords.lib.utils.BatchJobHelperInterface;
 import com.google.api.ads.adwords.lib.utils.BatchJobUploadResponse;
 import com.google.api.ads.adwords.lib.utils.BatchJobUploadStatus;
 import com.google.api.ads.adwords.lib.utils.BatchJobUploader;
 import com.google.api.ads.adwords.lib.utils.logging.BatchJobLogger;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-
-import org.apache.axis.client.Call;
-import org.apache.axis.encoding.TypeMapping;
-
+import com.google.inject.Inject;
 import java.net.URI;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.List;
-
 import javax.xml.namespace.QName;
 import javax.xml.rpc.ServiceException;
+import org.apache.axis.client.Call;
+import org.apache.axis.encoding.TypeMapping;
 
-/**
- * Utility for uploading operations and downloading results for a {@link BatchJob}.
- */
-class BatchJobHelperImpl implements BatchJobHelperInterface<Operation, Operand, ApiError,
-    MutateResult, BatchJobMutateResponse> {
-  private final BatchJobUploader<Operand, ApiError, MutateResult, BatchJobMutateResponse> uploader;
+/** Utility for uploading operations and downloading results for a {@link BatchJob}. */
+class BatchJobHelperImpl
+    implements BatchJobHelperInterface<
+        Operation, Operand, ApiError, MutateResult, BatchJobMutateResponse> {
+  private final BatchJobUploader uploader;
   private final BatchJobLogger batchJobLogger;
   private final QName resultQName;
-  
-  public BatchJobHelperImpl(AdWordsSession session) {
-    this(
-        new BatchJobUploader<Operand, ApiError, MutateResult, BatchJobMutateResponse>(
-            session, true));
-  }
 
-  /**
-   * Constructor for testing to allow mocking of the underlying uploader.
-   */
-  @VisibleForTesting
-  BatchJobHelperImpl(
-      BatchJobUploader<Operand, ApiError, MutateResult, BatchJobMutateResponse> uploader) {
+  @Inject
+  BatchJobHelperImpl(BatchJobUploader uploader, BatchJobLogger batchJobLogger) {
     this.uploader = uploader;
-    batchJobLogger = AdWordsInternals.getInstance().getAdWordsServiceLoggers().getBatchJobLogger();
+    this.batchJobLogger = batchJobLogger;
     resultQName = new QName("https://adwords.google.com/api/adwords/cm/v201607", "MutateResult");
   }
 

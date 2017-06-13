@@ -15,7 +15,9 @@
 package com.google.api.ads.adwords.axis.utils.v201607.batchjob;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import com.google.api.ads.adwords.axis.factory.AdWordsServices;
 import com.google.api.ads.adwords.axis.v201607.cm.ApiError;
 import com.google.api.ads.adwords.axis.v201607.cm.Campaign;
 import com.google.api.ads.adwords.axis.v201607.cm.CampaignOperation;
@@ -25,7 +27,7 @@ import com.google.api.ads.adwords.axis.v201607.cm.Operation;
 import com.google.api.ads.adwords.axis.v201607.cm.Operator;
 import com.google.api.ads.adwords.lib.utils.BatchJobHelperInterface;
 import com.google.api.ads.adwords.lib.utils.BatchJobUploader;
-
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
@@ -37,12 +39,25 @@ public class BatchJobHelperTest
     extends com.google.api.ads.adwords.lib.utils.testing.BatchJobHelperTest<
         Operation, Operand, ApiError, MutateResult, BatchJobMutateResponse> {
 
+  @Test
+  public void testGetFromAdWordsServices() {
+    BatchJobHelper helper = AdWordsServices.getInstance().getUtility(session, BatchJobHelper.class);
+    assertNotNull("Helper from AdWordsServices is null", helper);
+  }
+
+  @Test
+  public void testSessionBasedConstructor() {
+    BatchJobHelper helper = new BatchJobHelper(session);
+    assertNotNull("Helper from session-based constructor is null", helper);
+  }
+  
   @Override
   protected BatchJobHelperInterface<
           Operation, Operand, ApiError, MutateResult, BatchJobMutateResponse>
       createBatchJobHelper(
-          BatchJobUploader<Operand, ApiError, MutateResult, BatchJobMutateResponse> uploader) {
-    return new BatchJobHelper(uploader);
+          BatchJobUploader uploader) {
+    return new BatchJobHelper(new BatchJobHelperImpl(uploader, batchJobLogger),
+        adsUtilityRegistry);
   }
 
   @Override

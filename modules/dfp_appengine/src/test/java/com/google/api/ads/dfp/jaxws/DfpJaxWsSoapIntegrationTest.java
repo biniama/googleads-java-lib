@@ -20,16 +20,18 @@ import static org.junit.Assert.assertFalse;
 import com.google.api.ads.common.lib.testing.MockHttpIntegrationTest;
 import com.google.api.ads.dfp.jaxws.factory.DfpServices;
 import com.google.api.ads.dfp.jaxws.testing.SoapRequestXmlProvider;
-import com.google.api.ads.dfp.jaxws.v201602.Company;
-import com.google.api.ads.dfp.jaxws.v201602.CompanyServiceInterface;
+import com.google.api.ads.dfp.jaxws.v201702.Company;
+import com.google.api.ads.dfp.jaxws.v201702.CompanyServiceInterface;
 import com.google.api.ads.dfp.lib.client.DfpSession;
 import com.google.api.ads.dfp.lib.soap.testing.SoapResponseXmlProvider;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.common.collect.Lists;
-
+import java.util.List;
+import javax.xml.ws.WebServiceException;
 import org.custommonkey.xmlunit.XMLAssert;
+import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -37,26 +39,29 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.List;
-
-import javax.xml.ws.WebServiceException;
-
 /**
  * Tests that a DFP JAX-WS SOAP call can be made end-to-end.
  */
 @RunWith(JUnit4.class)
 public class DfpJaxWsSoapIntegrationTest extends MockHttpIntegrationTest {
   
-  private static final String API_VERSION = "v201602";  
+  private static final String API_VERSION = "v201702";  
 
   @Rule
   public final ExpectedException thrown = ExpectedException.none(); 
-  
+
   @BeforeClass
   public static void setupClass() {
     System.setProperty("api.adwords.useCompression", "false");
   }
   
+  @After
+  public void tearDown() {
+    // Clear the request timeout property in case testRequestTimeoutEnforced runs before
+    // other tests.
+    System.clearProperty("api.dfp.soapRequestTimeout");
+  }
+
   /**
    * Tests making a JAX-WS DFP API call with OAuth2.
    */

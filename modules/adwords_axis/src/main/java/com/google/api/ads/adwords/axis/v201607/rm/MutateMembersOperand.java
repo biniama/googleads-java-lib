@@ -39,8 +39,11 @@ public class MutateMembersOperand  implements java.io.Serializable {
 
     /* A list of members to be added or removed.
      *                 
-     *                 <p>This field is required and there must be at least
+     *                 <p>If {@link #removeAll} is {@code true}, this list
+     * must be {@code null} or empty. Otherwise,
+     *                 this field is required and there must be at least
      * one member.
+     *                 
      *                 <p>Each element in members list should be in format
      * according to the specified
      *                 {@code dataType}.
@@ -62,6 +65,15 @@ public class MutateMembersOperand  implements java.io.Serializable {
            this.members = members;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("dataType", getDataType())
+            .add("members", getMembers())
+            .add("userListId", getUserListId())
+            .toString();
+    }
 
     /**
      * Gets the userListId value for this MutateMembersOperand.
@@ -118,8 +130,11 @@ public class MutateMembersOperand  implements java.io.Serializable {
      * 
      * @return members   * A list of members to be added or removed.
      *                 
-     *                 <p>This field is required and there must be at least
+     *                 <p>If {@link #removeAll} is {@code true}, this list
+     * must be {@code null} or empty. Otherwise,
+     *                 this field is required and there must be at least
      * one member.
+     *                 
      *                 <p>Each element in members list should be in format
      * according to the specified
      *                 {@code dataType}.
@@ -138,8 +153,11 @@ public class MutateMembersOperand  implements java.io.Serializable {
      * 
      * @param members   * A list of members to be added or removed.
      *                 
-     *                 <p>This field is required and there must be at least
+     *                 <p>If {@link #removeAll} is {@code true}, this list
+     * must be {@code null} or empty. Otherwise,
+     *                 this field is required and there must be at least
      * one member.
+     *                 
      *                 <p>Each element in members list should be in format
      * according to the specified
      *                 {@code dataType}.

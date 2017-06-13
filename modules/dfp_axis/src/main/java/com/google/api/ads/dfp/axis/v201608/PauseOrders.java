@@ -23,13 +23,19 @@ package com.google.api.ads.dfp.axis.v201608;
 
 
 /**
- * The action used for pausing {@link Order} objects. All {@link LineItem}
- * objects within the order will be paused as well.
+ * The action used for pausing all {@link LineItem} objects within
+ * an order.
  */
 public class PauseOrders  extends com.google.api.ads.dfp.axis.v201608.OrderAction  implements java.io.Serializable {
     public PauseOrders() {
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .toString();
+    }
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof PauseOrders)) return false;

@@ -28,8 +28,8 @@ package com.google.api.ads.dfp.axis.v201608;
  */
 public class AdRule  implements java.io.Serializable {
     /* The unique ID of the {@link AdRule}. This value is readonly
-     * and is assigned
-     *                 by Google. */
+     * and is assigned by Google. Renamed
+     *                 to {@code adRuleId} beginning in V201702. */
     private java.lang.Integer id;
 
     /* The unique name of the {@link AdRule}. This attribute is required
@@ -146,13 +146,34 @@ public class AdRule  implements java.io.Serializable {
            this.postroll = postroll;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("endDateTime", getEndDateTime())
+            .add("frequencyCapBehavior", getFrequencyCapBehavior())
+            .add("id", getId())
+            .add("maxImpressionsPerLineItemPerPod", getMaxImpressionsPerLineItemPerPod())
+            .add("maxImpressionsPerLineItemPerStream", getMaxImpressionsPerLineItemPerStream())
+            .add("midroll", getMidroll())
+            .add("name", getName())
+            .add("postroll", getPostroll())
+            .add("preroll", getPreroll())
+            .add("priority", getPriority())
+            .add("startDateTime", getStartDateTime())
+            .add("startDateTimeType", getStartDateTimeType())
+            .add("status", getStatus())
+            .add("targeting", getTargeting())
+            .add("unlimitedEndDateTime", getUnlimitedEndDateTime())
+            .toString();
+    }
 
     /**
      * Gets the id value for this AdRule.
      * 
      * @return id   * The unique ID of the {@link AdRule}. This value is readonly
-     * and is assigned
-     *                 by Google.
+     * and is assigned by Google. Renamed
+     *                 to {@code adRuleId} beginning in V201702.
      */
     public java.lang.Integer getId() {
         return id;
@@ -163,8 +184,8 @@ public class AdRule  implements java.io.Serializable {
      * Sets the id value for this AdRule.
      * 
      * @param id   * The unique ID of the {@link AdRule}. This value is readonly
-     * and is assigned
-     *                 by Google.
+     * and is assigned by Google. Renamed
+     *                 to {@code adRuleId} beginning in V201702.
      */
     public void setId(java.lang.Integer id) {
         this.id = id;

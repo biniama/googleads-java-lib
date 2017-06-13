@@ -22,8 +22,6 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import com.google.api.ads.adwords.jaxws.v201609.billing.BudgetOrderOperation;
-import com.google.api.ads.adwords.jaxws.v201609.express.ExpressBusinessOperation;
-import com.google.api.ads.adwords.jaxws.v201609.express.PromotionOperation;
 import com.google.api.ads.adwords.jaxws.v201609.mcm.AccountLabelOperation;
 import com.google.api.ads.adwords.jaxws.v201609.mcm.LinkOperation;
 import com.google.api.ads.adwords.jaxws.v201609.mcm.ManagedCustomerLabelOperation;
@@ -99,8 +97,6 @@ import com.google.api.ads.adwords.jaxws.v201609.rm.UserListOperation;
     CampaignOperation.class,
     CampaignFeedOperation.class,
     BudgetOrderOperation.class,
-    ExpressBusinessOperation.class,
-    PromotionOperation.class,
     ManagedCustomerLabelOperation.class,
     AccountLabelOperation.class,
     ServiceLinkOperation.class,

@@ -84,7 +84,8 @@ public class FeedMapping  implements java.io.Serializable {
     /* The criterion type for this mapping. This field is mutually
      * exclusive with placeholderType.
      *                 <span class="constraint Selectable">This field can
-     * be selected using the value "CriterionType".</span> */
+     * be selected using the value "CriterionType".</span><span class="constraint
+     * Filterable">This field can be filtered on.</span> */
     private java.lang.Integer criterionType;
 
     public FeedMapping() {
@@ -105,6 +106,18 @@ public class FeedMapping  implements java.io.Serializable {
            this.criterionType = criterionType;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("attributeFieldMappings", getAttributeFieldMappings())
+            .add("criterionType", getCriterionType())
+            .add("feedId", getFeedId())
+            .add("feedMappingId", getFeedMappingId())
+            .add("placeholderType", getPlaceholderType())
+            .add("status", getStatus())
+            .toString();
+    }
 
     /**
      * Gets the feedMappingId value for this FeedMapping.
@@ -274,7 +287,8 @@ public class FeedMapping  implements java.io.Serializable {
      * @return criterionType   * The criterion type for this mapping. This field is mutually
      * exclusive with placeholderType.
      *                 <span class="constraint Selectable">This field can
-     * be selected using the value "CriterionType".</span>
+     * be selected using the value "CriterionType".</span><span class="constraint
+     * Filterable">This field can be filtered on.</span>
      */
     public java.lang.Integer getCriterionType() {
         return criterionType;
@@ -287,7 +301,8 @@ public class FeedMapping  implements java.io.Serializable {
      * @param criterionType   * The criterion type for this mapping. This field is mutually
      * exclusive with placeholderType.
      *                 <span class="constraint Selectable">This field can
-     * be selected using the value "CriterionType".</span>
+     * be selected using the value "CriterionType".</span><span class="constraint
+     * Filterable">This field can be filtered on.</span>
      */
     public void setCriterionType(java.lang.Integer criterionType) {
         this.criterionType = criterionType;

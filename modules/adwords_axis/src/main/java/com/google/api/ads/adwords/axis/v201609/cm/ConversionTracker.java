@@ -224,9 +224,13 @@ public abstract class ConversionTracker  implements java.io.Serializable {
      * Filterable">This field can be filtered on.</span> */
     private java.lang.Boolean excludeFromBidding;
 
-    /* The active search attribution model type.
-     *                 <span class="constraint Selectable">This field can
-     * be selected using the value "AttributionModelType".</span> */
+    /* Attribution models describing how to distribute credit for
+     * a particular conversion across
+     *                 potentially many prior interactions. See https://support.google.com/adwords/answer/6259715
+     * for
+     *                 more information about attribution modeling in AdWords.
+     * <span class="constraint Selectable">This field can be selected using
+     * the value "AttributionModelType".</span> */
     private com.google.api.ads.adwords.axis.v201609.cm.AttributionModelType attributionModelType;
 
     /* The date of the most recent ad click that led to a conversion
@@ -304,6 +308,30 @@ public abstract class ConversionTracker  implements java.io.Serializable {
            this.conversionTrackerType = conversionTrackerType;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("alwaysUseDefaultRevenueValue", getAlwaysUseDefaultRevenueValue())
+            .add("attributionModelType", getAttributionModelType())
+            .add("category", getCategory())
+            .add("conversionTrackerType", getConversionTrackerType())
+            .add("conversionTypeOwnerCustomerId", getConversionTypeOwnerCustomerId())
+            .add("countingType", getCountingType())
+            .add("ctcLookbackWindow", getCtcLookbackWindow())
+            .add("dataDrivenModelStatus", getDataDrivenModelStatus())
+            .add("defaultRevenueCurrencyCode", getDefaultRevenueCurrencyCode())
+            .add("defaultRevenueValue", getDefaultRevenueValue())
+            .add("excludeFromBidding", getExcludeFromBidding())
+            .add("id", getId())
+            .add("lastReceivedRequestTime", getLastReceivedRequestTime())
+            .add("mostRecentConversionDate", getMostRecentConversionDate())
+            .add("name", getName())
+            .add("originalConversionTypeId", getOriginalConversionTypeId())
+            .add("status", getStatus())
+            .add("viewthroughLookbackWindow", getViewthroughLookbackWindow())
+            .toString();
+    }
 
     /**
      * Gets the id value for this ConversionTracker.
@@ -900,9 +928,13 @@ public abstract class ConversionTracker  implements java.io.Serializable {
     /**
      * Gets the attributionModelType value for this ConversionTracker.
      * 
-     * @return attributionModelType   * The active search attribution model type.
-     *                 <span class="constraint Selectable">This field can
-     * be selected using the value "AttributionModelType".</span>
+     * @return attributionModelType   * Attribution models describing how to distribute credit for
+     * a particular conversion across
+     *                 potentially many prior interactions. See https://support.google.com/adwords/answer/6259715
+     * for
+     *                 more information about attribution modeling in AdWords.
+     * <span class="constraint Selectable">This field can be selected using
+     * the value "AttributionModelType".</span>
      */
     public com.google.api.ads.adwords.axis.v201609.cm.AttributionModelType getAttributionModelType() {
         return attributionModelType;
@@ -912,9 +944,13 @@ public abstract class ConversionTracker  implements java.io.Serializable {
     /**
      * Sets the attributionModelType value for this ConversionTracker.
      * 
-     * @param attributionModelType   * The active search attribution model type.
-     *                 <span class="constraint Selectable">This field can
-     * be selected using the value "AttributionModelType".</span>
+     * @param attributionModelType   * Attribution models describing how to distribute credit for
+     * a particular conversion across
+     *                 potentially many prior interactions. See https://support.google.com/adwords/answer/6259715
+     * for
+     *                 more information about attribution modeling in AdWords.
+     * <span class="constraint Selectable">This field can be selected using
+     * the value "AttributionModelType".</span>
      */
     public void setAttributionModelType(com.google.api.ads.adwords.axis.v201609.cm.AttributionModelType attributionModelType) {
         this.attributionModelType = attributionModelType;

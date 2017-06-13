@@ -37,8 +37,8 @@ public class AdGroupAd  implements java.io.Serializable {
     private com.google.api.ads.adwords.axis.v201607.cm.Ad ad;
 
     /* Experiment data associated with this {@link AdGroupAd}. It
-     * is returned by
-     *                 {@link AdGroupAdService#get get()} only if the experimentId
+     * is returned by {@link
+     *                 AdGroupAdService#get get()} only if the experimentId
      * is supplied. */
     private com.google.api.ads.adwords.axis.v201607.cm.AdGroupAdExperimentData experimentData;
 
@@ -140,6 +140,24 @@ public class AdGroupAd  implements java.io.Serializable {
            this.forwardCompatibilityMap = forwardCompatibilityMap;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("ad", getAd())
+            .add("adGroupId", getAdGroupId())
+            .add("approvalStatus", getApprovalStatus())
+            .add("baseAdGroupId", getBaseAdGroupId())
+            .add("baseCampaignId", getBaseCampaignId())
+            .add("disapprovalReasons", getDisapprovalReasons())
+            .add("experimentData", getExperimentData())
+            .add("forwardCompatibilityMap", getForwardCompatibilityMap())
+            .add("labels", getLabels())
+            .add("status", getStatus())
+            .add("trademarkDisapproved", getTrademarkDisapproved())
+            .add("trademarks", getTrademarks())
+            .toString();
+    }
 
     /**
      * Gets the adGroupId value for this AdGroupAd.
@@ -193,8 +211,8 @@ public class AdGroupAd  implements java.io.Serializable {
      * Gets the experimentData value for this AdGroupAd.
      *
      * @return experimentData   * Experiment data associated with this {@link AdGroupAd}. It
-     * is returned by
-     *                 {@link AdGroupAdService#get get()} only if the experimentId
+     * is returned by {@link
+     *                 AdGroupAdService#get get()} only if the experimentId
      * is supplied.
      */
     public com.google.api.ads.adwords.axis.v201607.cm.AdGroupAdExperimentData getExperimentData() {
@@ -206,8 +224,8 @@ public class AdGroupAd  implements java.io.Serializable {
      * Sets the experimentData value for this AdGroupAd.
      *
      * @param experimentData   * Experiment data associated with this {@link AdGroupAd}. It
-     * is returned by
-     *                 {@link AdGroupAdService#get get()} only if the experimentId
+     * is returned by {@link
+     *                 AdGroupAdService#get get()} only if the experimentId
      * is supplied.
      */
     public void setExperimentData(com.google.api.ads.adwords.axis.v201607.cm.AdGroupAdExperimentData experimentData) {

@@ -24,12 +24,11 @@ package com.google.api.ads.dfp.axis.v201608;
 
 /**
  * An {@code AdUnitSize} represents the size of an ad in an ad unit.
- * Starting
- *             with v201108 this also represents the environment, and
- * companions of a
- *             particular ad in an ad unit. In most cases, it is a simple
- * size with just a
- *             width and a height (sometimes representing an aspect ratio).
+ * This also represents
+ *             the environment and companions of a particular ad in an
+ * ad unit. In most cases, it is
+ *             a simple size with just a width and a height (sometimes
+ * representing an aspect ratio).
  */
 public class AdUnitSize  implements java.io.Serializable {
     /* The permissible creative size that can be served inside this
@@ -68,6 +67,16 @@ public class AdUnitSize  implements java.io.Serializable {
            this.fullDisplayString = fullDisplayString;
     }
 
+    @Override
+    public String toString() {
+        return com.google.common.base.MoreObjects.toStringHelper(this.getClass())
+            .omitNullValues()
+            .add("companions", getCompanions())
+            .add("environmentType", getEnvironmentType())
+            .add("fullDisplayString", getFullDisplayString())
+            .add("size", getSize())
+            .toString();
+    }
 
     /**
      * Gets the size value for this AdUnitSize.
