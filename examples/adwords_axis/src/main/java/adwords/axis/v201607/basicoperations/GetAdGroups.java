@@ -51,7 +51,7 @@ public class GetAdGroups {
         .withOAuth2Credential(oAuth2Credential)
         .build();
 
-    Long campaignId = Long.parseLong("INSERT_CAMPAIGN_ID_HERE");
+    Long campaignId = Long.parseLong("281408666");
 
     AdWordsServices adWordsServices = new AdWordsServices();
 
@@ -74,7 +74,8 @@ public class GetAdGroups {
         .orderAscBy(AdGroupField.Name)
         .offset(offset)
         .limit(PAGE_SIZE)
-        .equals(AdGroupField.CampaignId, campaignId.toString())
+        .contains(AdGroupField.Name, "PSP")
+        //.equals(AdGroupField.CampaignId, campaignId.toString())
         .build();
 
     while (morePages) {

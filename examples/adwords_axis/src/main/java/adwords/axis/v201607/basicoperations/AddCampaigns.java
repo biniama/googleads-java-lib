@@ -100,8 +100,8 @@ public class AddCampaigns {
 
     // Create campaign.
     Campaign campaign = new Campaign();
-    campaign.setName("Interplanetary Cruise #" + System.currentTimeMillis());
-    campaign.setStatus(CampaignStatus.PAUSED);
+    campaign.setName("Böblingen-BW-DS");
+    campaign.setStatus(CampaignStatus.ENABLED);
     BiddingStrategyConfiguration biddingStrategyConfiguration = new BiddingStrategyConfiguration();
     biddingStrategyConfiguration.setBiddingStrategyType(BiddingStrategyType.MANUAL_CPC);
 
@@ -140,8 +140,8 @@ public class AddCampaigns {
 
     // You can create multiple campaigns in a single request.
     Campaign campaign2 = new Campaign();
-    campaign2.setName("Interplanetary Cruise banner #" + System.currentTimeMillis());
-    campaign2.setStatus(CampaignStatus.PAUSED);
+    campaign2.setName("Böblingen-BW-MC");
+    campaign2.setStatus(CampaignStatus.ENABLED);
     BiddingStrategyConfiguration biddingStrategyConfiguration2 = new BiddingStrategyConfiguration();
     biddingStrategyConfiguration2.setBiddingStrategyType(BiddingStrategyType.MANUAL_CPC);
     campaign2.setBiddingStrategyConfiguration(biddingStrategyConfiguration2);

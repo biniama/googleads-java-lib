@@ -51,7 +51,7 @@ public class GetAdGroups {
         .withOAuth2Credential(oAuth2Credential)
         .build();
 
-    Long campaignId = Long.parseLong("INSERT_CAMPAIGN_ID_HERE");
+    Long campaignId = Long.parseLong("644859007");
 
     AdWordsServices adWordsServices = new AdWordsServices();
 

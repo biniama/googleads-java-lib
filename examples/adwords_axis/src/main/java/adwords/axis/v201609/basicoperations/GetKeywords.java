@@ -52,7 +52,7 @@ public class GetKeywords {
         .withOAuth2Credential(oAuth2Credential)
         .build();
 
-    Long adGroupId = Long.parseLong("INSERT_AD_GROUP_ID_HERE");
+    Long adGroupId = 1L; //Long.parseLong("INSERT_AD_GROUP_ID_HERE");
 
     AdWordsServices adWordsServices = new AdWordsServices();
 
@@ -72,15 +72,15 @@ public class GetKeywords {
     SelectorBuilder builder = new SelectorBuilder();
     Selector selector = builder
         .fields(
-            AdGroupCriterionField.Id,
-            AdGroupCriterionField.CriteriaType,
-            AdGroupCriterionField.KeywordMatchType,
-            AdGroupCriterionField.KeywordText)
+                AdGroupCriterionField.Id,
+                AdGroupCriterionField.CriteriaType,
+                AdGroupCriterionField.KeywordMatchType,
+                AdGroupCriterionField.KeywordText)
         .orderAscBy(AdGroupCriterionField.KeywordText)
         .offset(offset)
         .limit(PAGE_SIZE)
-        .in(AdGroupCriterionField.AdGroupId, adGroupId.toString())
         .in(AdGroupCriterionField.CriteriaType, "KEYWORD")
+        .in(AdGroupCriterionField.CriterionUse, "BIDDABLE")
         .build();
 
     while (morePages) {

@@ -12,25 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package adwords.axis.v201607.basicoperations;
+package adwords.axis.v201609.basicoperations;
 
 import com.google.api.ads.adwords.axis.factory.AdWordsServices;
-import com.google.api.ads.adwords.axis.v201607.cm.*;
+import com.google.api.ads.adwords.axis.utils.v201609.SelectorBuilder;
+import com.google.api.ads.adwords.axis.v201609.cm.AdGroupPage;
+import com.google.api.ads.adwords.axis.v201609.cm.AdGroupServiceInterface;
+import com.google.api.ads.adwords.axis.v201609.cm.Paging;
+import com.google.api.ads.adwords.axis.v201609.cm.Selector;
 import com.google.api.ads.adwords.lib.client.AdWordsSession;
 import com.google.api.ads.common.lib.auth.OfflineCredentials;
 import com.google.api.ads.common.lib.auth.OfflineCredentials.Api;
 import com.google.api.client.auth.oauth2.Credential;
 
+import java.text.NumberFormat;
+
+import static com.google.api.ads.adwords.lib.selectorfields.v201609.cm.AdGroupField.Id;
+import static com.google.api.ads.adwords.lib.selectorfields.v201609.cm.AdGroupField.Name;
+
 /**
- * This example gets all campaigns with AWQL. To add a campaign, run
- * AddCampaign.java.
+ * This example gets count of all ad groups in an account.
  *
  * <p>Credentials and properties in {@code fromFile()} are pulled from the
  * "ads.properties" file. See README for more info.
  */
-public class GetAdGroupsWithAwql {
-
-  private static final int PAGE_SIZE = 100;
+public class GetCountOfAdGroupsInAccount {
 
   public static void main(String[] args) throws Exception {
     // Generate a refreshable OAuth2 credential.
@@ -52,32 +58,25 @@ public class GetAdGroupsWithAwql {
   }
 
   public static void runExample(
-    AdWordsServices adWordsServices, AdWordsSession session) throws Exception {
-    // Get the AdGroupService.
-    AdGroupServiceInterface adGroupService =
+      AdWordsServices adWordsServices, AdWordsSession session) throws Exception {
+      // Get the AdGroupService.
+      AdGroupServiceInterface adGroupService =
               adWordsServices.get(session, AdGroupServiceInterface.class);
 
-    int offset = 0;
+      // Create selector.
+      SelectorBuilder builder = new SelectorBuilder();
+      Selector selector = builder
+              .fields(Id)
+              .contains(Name, "8013263")
+              .build();
 
-    String query = "SELECT Id, Name, Status ORDER BY Name";
+      // Set selector paging
+      Paging paging = new Paging();
+      paging.setNumberResults(0);
+      selector.setPaging(paging);
 
-    AdGroupPage page = null;
-    do {
-      String pageQuery = query + String.format(" LIMIT %d, %d", offset, PAGE_SIZE);
-      // Get all campaigns.
-      page = adGroupService.query(pageQuery);
+      AdGroupPage page = adGroupService.get(selector);
 
-      // Display campaigns.
-      if (page.getEntries() != null) {
-        for (AdGroup adGroup : page.getEntries()) {
-            System.out.printf("Ad group with name '%s', ID %d and Status '%s' was found.%n", adGroup.getName(),
-                    adGroup.getId(), adGroup.getStatus());
-        }
-      } else {
-        System.out.println("No ad groups were found.");
-      }
-
-      offset += PAGE_SIZE;
-    } while (offset < page.getTotalNumEntries());
+      System.out.println("Count of AdGroups = " + NumberFormat.getInstance().format(page.getTotalNumEntries()));
   }
 }
