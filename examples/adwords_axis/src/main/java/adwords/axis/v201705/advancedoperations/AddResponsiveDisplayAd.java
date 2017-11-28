@@ -15,22 +15,15 @@
 package adwords.axis.v201705.advancedoperations;
 
 import com.google.api.ads.adwords.axis.factory.AdWordsServices;
-import com.google.api.ads.adwords.axis.v201705.cm.AdGroupAd;
-import com.google.api.ads.adwords.axis.v201705.cm.AdGroupAdOperation;
-import com.google.api.ads.adwords.axis.v201705.cm.AdGroupAdReturnValue;
-import com.google.api.ads.adwords.axis.v201705.cm.AdGroupAdServiceInterface;
-import com.google.api.ads.adwords.axis.v201705.cm.AdGroupAdStatus;
-import com.google.api.ads.adwords.axis.v201705.cm.Image;
-import com.google.api.ads.adwords.axis.v201705.cm.Media;
-import com.google.api.ads.adwords.axis.v201705.cm.MediaMediaType;
-import com.google.api.ads.adwords.axis.v201705.cm.MediaServiceInterface;
-import com.google.api.ads.adwords.axis.v201705.cm.Operator;
-import com.google.api.ads.adwords.axis.v201705.cm.ResponsiveDisplayAd;
+import com.google.api.ads.adwords.axis.v201705.cm.*;
 import com.google.api.ads.adwords.lib.client.AdWordsSession;
 import com.google.api.ads.adwords.lib.factory.AdWordsServicesInterface;
 import com.google.api.ads.common.lib.auth.OfflineCredentials;
 import com.google.api.ads.common.lib.auth.OfflineCredentials.Api;
 import com.google.api.client.auth.oauth2.Credential;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * This example adds an image representing the ad using the MediaService and then adds a responsive
@@ -42,6 +35,11 @@ import com.google.api.client.auth.oauth2.Credential;
 public class AddResponsiveDisplayAd {
 
   public static void main(String[] args) throws Exception {
+
+      DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+      java.util.Date date = new java.util.Date();
+      System.out.println(dateFormat.format(date));
+
     // Generate a refreshable OAuth2 credential.
     Credential oAuth2Credential = new OfflineCredentials.Builder()
         .forApi(Api.ADWORDS)
@@ -55,7 +53,7 @@ public class AddResponsiveDisplayAd {
         .withOAuth2Credential(oAuth2Credential)
         .build();
 
-    long adGroupId = Long.parseLong("INSERT_AD_GROUP_ID_HERE");
+    long adGroupId = Long.parseLong("45053782962");
 
     AdWordsServicesInterface adWordsServices = AdWordsServices.getInstance();
 
@@ -65,17 +63,33 @@ public class AddResponsiveDisplayAd {
   public static void runExample(
       AdWordsServicesInterface adWordsServices, AdWordsSession session, long adGroupId)
       throws Exception {
-    // Get the MediaService.
+   // Get the MediaService.
     MediaServiceInterface mediaService = adWordsServices.get(session, MediaServiceInterface.class);
 
     // Create image.
     Image image = new Image();
     image.setType(MediaMediaType.IMAGE);
+   // image.setData(com.google.api.ads.common.lib.utils.Media.getMediaDataFromUrl("https://goo.gl/3b9Wfh"));
+
     image.setData(
-        com.google.api.ads.common.lib.utils.Media.getMediaDataFromUrl("https://goo.gl/3b9Wfh"));
+        com.google.api.ads.common.lib.utils.Media.getMediaDataFromUrl("https://blondish.net/wp-content/uploads/2015/04/skybluerays-600x315.png?x38371"));
 
     // Upload image.
     image = (Image) mediaService.upload(new Media[] {image})[0];
+    System.out.println("Image Media Id: " + image.getMediaId());
+
+      DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+      java.util.Date date = new java.util.Date();
+      System.out.println(dateFormat.format(date));
+
+/*      Media[] images = mediaService.upload(new Media[] {image});
+
+      for(Media im : images) {
+          System.out.println("Media Id: " + im.getMediaId());
+      }*/
+
+   //Long mediaId = 2888314281L;
+  //  System.out.println("Image Media Id: " + mediaId);
 
     // Get the AdGroupAdService.
     AdGroupAdServiceInterface adGroupAdService =
@@ -88,7 +102,13 @@ public class AddResponsiveDisplayAd {
     // Image.data field. An image must first be created using the MediaService,
     // and Image.mediaId must be populated when creating the ad.
     Image marketingImage = new Image();
-    marketingImage.setMediaId(image.getMediaId());
+
+      //Use this when Image is Uploaded
+      marketingImage.setMediaId(image.getMediaId());
+
+      //Use this when you have an already uploaded image and you know the ID
+      //marketingImage.setMediaId(mediaId);
+
     responsiveDisplayAd.setMarketingImage(marketingImage);
 
     responsiveDisplayAd.setShortHeadline("Travel");
@@ -111,15 +131,21 @@ public class AddResponsiveDisplayAd {
     adGroupAdOperation.setOperator(Operator.ADD);
 
     // Make the mutate request.
-    AdGroupAdReturnValue result =
-        adGroupAdService.mutate(new AdGroupAdOperation[] {adGroupAdOperation});
+    AdGroupAdReturnValue result = adGroupAdService.mutate(new AdGroupAdOperation[] {adGroupAdOperation});
+
+    if (result.getPartialFailureErrors() != null) {
+        for(ApiError error : result.getPartialFailureErrors()) {
+            System.out.println("Error: " + error.getErrorString());
+        }
+    }
 
     // Display ads.
     for (AdGroupAd adGroupAdResult : result.getValue()) {
       ResponsiveDisplayAd newAd = (ResponsiveDisplayAd) adGroupAdResult.getAd();
-      System.out.printf(
-          "Responsive display ad with ID %d and short headline '%s' was added.%n",
-          newAd.getId(), newAd.getShortHeadline());
+      if (newAd != null) {
+         System.out.printf(
+             "Responsive display ad with ID %d and short headline '%s' was added.%n", newAd.getId(), newAd.getShortHeadline());
+      }
     }
   }
 }

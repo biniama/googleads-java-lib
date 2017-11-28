@@ -74,7 +74,7 @@ public class AddAdGroups {
 
     // Create ad group.
     AdGroup adGroup = new AdGroup();
-    adGroup.setName("Earth to Mars Cruises #" + System.currentTimeMillis());
+    adGroup.setName("ResponsiveAd - Test 3");
     adGroup.setStatus(AdGroupStatus.ENABLED);
     adGroup.setCampaignId(campaignId);
 
@@ -110,7 +110,7 @@ public class AddAdGroups {
 
     // Add as many additional ad groups as you need.
     AdGroup adGroup2 = new AdGroup();
-    adGroup2.setName("Earth to Venus Cruises #" + System.currentTimeMillis());
+    adGroup2.setName("ResponsiveAd - Test 4");
     adGroup2.setStatus(AdGroupStatus.ENABLED);
     adGroup2.setCampaignId(campaignId);
 

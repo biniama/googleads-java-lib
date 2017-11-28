@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package adwords.axis.v201609.basicoperations;
+package adwords.axis.v201705.biniam;
 
 import com.google.api.ads.adwords.axis.factory.AdWordsServices;
-import com.google.api.ads.adwords.axis.utils.v201609.SelectorBuilder;
-import com.google.api.ads.adwords.axis.v201609.cm.AdGroupPage;
-import com.google.api.ads.adwords.axis.v201609.cm.AdGroupServiceInterface;
-import com.google.api.ads.adwords.axis.v201609.cm.Paging;
-import com.google.api.ads.adwords.axis.v201609.cm.Selector;
+import com.google.api.ads.adwords.axis.utils.v201705.SelectorBuilder;
+import com.google.api.ads.adwords.axis.v201705.cm.AdGroupPage;
+import com.google.api.ads.adwords.axis.v201705.cm.AdGroupServiceInterface;
+import com.google.api.ads.adwords.axis.v201705.cm.Paging;
+import com.google.api.ads.adwords.axis.v201705.cm.Selector;
 import com.google.api.ads.adwords.lib.client.AdWordsSession;
 import com.google.api.ads.common.lib.auth.OfflineCredentials;
 import com.google.api.ads.common.lib.auth.OfflineCredentials.Api;
@@ -27,7 +27,7 @@ import com.google.api.client.auth.oauth2.Credential;
 
 import java.text.NumberFormat;
 
-import static com.google.api.ads.adwords.lib.selectorfields.v201609.cm.AdGroupField.Id;
+import static com.google.api.ads.adwords.lib.selectorfields.v201705.cm.AdGroupField.Id;
 
 /**
  * This example gets count of all ad groups in an account.
